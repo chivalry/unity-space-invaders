@@ -2192,6 +2192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dc773d62b0b438988a6e331000185d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  shootClip: {fileID: 8300000, guid: f5190a9b8d29e49bb9cedcbbcc6982a5, type: 3}
+  alienExplodeClip: {fileID: 8300000, guid: 77214d0c635944b8fb71c69ecb4b23be, type: 3}
+  playerDieClip: {fileID: 8300000, guid: c25a88215040e4e2d867a47b412be7d5, type: 3}
+  gameOverClip: {fileID: 8300000, guid: 208140b6bb4244c2c80824f00c322fdf, type: 3}
+  gameWonClip: {fileID: 8300000, guid: 141e92e4ddab34cf1ab57e0eff812482, type: 3}
 --- !u!4 &1964425948
 Transform:
   m_ObjectHideFlags: 0
@@ -2361,6 +2366,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6327895626723366027, guid: bda46dd0241c643089e95e6440bc2f56, type: 3}
   m_PrefabInstance: {fileID: 2077658921}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2092475532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2092475534}
+  - component: {fileID: 2092475533}
+  m_Layer: 0
+  m_Name: UFOSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2092475533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092475532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7f46ec5f04043f3b772dbaa1cc54b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UfoController
+  ufoPrefab: {fileID: 4581701192144924981, guid: ce6a6ed4662ad4ea4b0d16b62b5e4250, type: 3}
+  spawnInterval: 25
+  speed: 3
+  spawnY: 4.5
+  despawnX: 10
+  pointValues: 3200000064000000960000002c010000
+--- !u!4 &2092475534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092475532}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00428, y: 0.00297, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2373,3 +2428,4 @@ SceneRoots:
   - {fileID: 1922930216}
   - {fileID: 978873269}
   - {fileID: 1076124884}
+  - {fileID: 2092475534}
