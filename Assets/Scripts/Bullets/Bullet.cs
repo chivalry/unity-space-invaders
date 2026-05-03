@@ -16,6 +16,17 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Collision handling added in Phase 4
+        if (isPlayerBullet && other.CompareTag("Alien"))
+        {
+            AlienController alien = other.GetComponent<AlienController>();
+            GameManager.Instance.AddScore(alien.PointValue);
+            alien.Die();
+            Destroy(gameObject);
+        }
+        else if (!isPlayerBullet && other.CompareTag("Player"))
+        {
+            GameManager.Instance.LoseLife();
+            Destroy(gameObject);
+        }
     }
 }
