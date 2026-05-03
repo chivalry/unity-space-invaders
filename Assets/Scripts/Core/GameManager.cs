@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour
     public event Action OnGameOver;
     public event Action OnGameWon;
 
+    [SerializeField] private AudioClip shootClip;
+    [SerializeField] private AudioClip alienExplodeClip;
+    [SerializeField] private AudioClip playerDieClip;
+    [SerializeField] private AudioClip gameOverClip;
+    [SerializeField] private AudioClip gameWonClip;
+
+    private AudioSource _audio;
+
     void Awake()
     {
         if (Instance != null)
@@ -21,7 +29,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
+        _audio = gameObject.AddComponent<AudioSource>();
     }
+
+    public void PlayShoot() => _audio.PlayOneShot(shootClip);
+    public void PlayAlienExplode() => _audio.PlayOneShot(alienExplodeClip);
 
     public void AddScore(int points)
     {
@@ -33,17 +45,23 @@ public class GameManager : MonoBehaviour
     {
         Lives--;
         OnLivesChanged?.Invoke(Lives);
+        _audio.PlayOneShot(playerDieClip);
         if (Lives <= 0)
+        {
+            _audio.PlayOneShot(gameOverClip);
             OnGameOver?.Invoke();
+        }
     }
 
     public void GameWon()
     {
+        _audio.PlayOneShot(gameWonClip);
         OnGameWon?.Invoke();
     }
 
     public void GameOver()
     {
+        _audio.PlayOneShot(gameOverClip);
         OnGameOver?.Invoke();
     }
 }

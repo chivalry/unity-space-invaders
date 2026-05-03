@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
         {
             AlienController alien = other.GetComponent<AlienController>();
             GameManager.Instance.AddScore(alien.PointValue);
+            GameManager.Instance.PlayAlienExplode();
             alien.Die();
             Destroy(gameObject);
         }

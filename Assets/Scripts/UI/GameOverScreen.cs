@@ -9,23 +9,19 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button playAgainButton;
     [SerializeField] private UnityEngine.UI.Button quitButton;
 
-    void OnEnable()
+    void Start()
     {
         GameManager.Instance.OnGameOver += ShowGameOver;
         GameManager.Instance.OnGameWon += ShowGameWon;
+        playAgainButton.onClick.AddListener(() => SceneManager.LoadScene(0));
+        quitButton.onClick.AddListener(() => Application.Quit());
+        gameObject.SetActive(false);
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         GameManager.Instance.OnGameOver -= ShowGameOver;
         GameManager.Instance.OnGameWon -= ShowGameWon;
-    }
-
-    void Start()
-    {
-        gameObject.SetActive(false);
-        playAgainButton.onClick.AddListener(() => SceneManager.LoadScene(0));
-        quitButton.onClick.AddListener(() => Application.Quit());
     }
 
     private void ShowGameOver()

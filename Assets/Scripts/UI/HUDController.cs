@@ -6,22 +6,18 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text livesText;
 
-    void OnEnable()
+    void Start()
     {
         GameManager.Instance.OnScoreChanged += UpdateScore;
         GameManager.Instance.OnLivesChanged += UpdateLives;
+        UpdateScore(GameManager.Instance.Score);
+        UpdateLives(GameManager.Instance.Lives);
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         GameManager.Instance.OnScoreChanged -= UpdateScore;
         GameManager.Instance.OnLivesChanged -= UpdateLives;
-    }
-
-    void Start()
-    {
-        UpdateScore(GameManager.Instance.Score);
-        UpdateLives(GameManager.Instance.Lives);
     }
 
     private void UpdateScore(int score) =>

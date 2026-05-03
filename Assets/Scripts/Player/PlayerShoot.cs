@@ -32,6 +32,7 @@ public class PlayerShoot : MonoBehaviour
             return;
 
         _nextFireTime = Time.time + fireRate;
+        GameManager.Instance.PlayShoot();
         Instantiate(bulletPrefab,
             transform.position + Vector3.up * 0.6f,
             Quaternion.identity);
