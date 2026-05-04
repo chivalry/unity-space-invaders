@@ -3,9 +3,19 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+/// <summary>
+/// Editor-only utility that procedurally builds a shield from individual pixel objects.
+/// Invoke via the context menu on the component in the Inspector.
+/// </summary>
 public class ShieldBuilder : MonoBehaviour
 {
 #if UNITY_EDITOR
+    /// <summary>
+    /// Destroys any existing child pixels and rebuilds a 6×4 pixel grid with a 2×2 notch
+    /// cut from the bottom-center, matching the classic Space Invaders shield shape.
+    /// Each pixel gets a <see cref="SpriteRenderer"/>, a trigger <see cref="BoxCollider2D"/>,
+    /// and a <see cref="ShieldPixel"/> component.
+    /// </summary>
     [ContextMenu("Build Shield Pixels")]
     void BuildShieldPixels()
     {
